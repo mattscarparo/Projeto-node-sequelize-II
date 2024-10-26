@@ -1,4 +1,3 @@
-const { where } = require('sequelize');
 const converteIds = require('../utils/conversorDeStringHelper.js');
 
 class Controller {
@@ -30,7 +29,7 @@ class Controller {
     const where = converteIds(params);
     console.log(params);
     try {
-      const umRegistro = await this.entidadeService.pegaUmRegistro(Number(where));
+      const umRegistro = await this.entidadeService.pegaUmRegistro(where);
       return res.status(200).json(umRegistro);
     } catch (erro) {
       return res.status(500).json({ erro: erro.message });
